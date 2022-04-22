@@ -1,0 +1,52 @@
+.App {
+  padding: 40px 80px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+
+.calculator {
+
+  &-display {
+    border: 1px solid goldenrod;
+    border-radius: 5px;
+    padding: 5px 10px;
+    height: 20px;
+  }
+
+  &-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      border: 1px solid red;
+      border-radius: 3px;
+      margin-right: 5px;
+      padding: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+
+      &:hover {
+        background-color: red;
+        color: #fff;
+      }
+    }
+
+    &--left {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      width: 70%;
+    }
+
+    &--right {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+}
