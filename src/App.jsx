@@ -19,7 +19,7 @@ const App = () => {
       return;
     }
     // setTempDisplay(`${operand.join(" ")} = ${eval(operand.join(""))}`);
-    setTempDisplay(`${eval(operand.join(""))}`);
+    setTempDisplay(`${eval(operand.join(" "))}`);
   };
 
   const handleOperatorClick = (operator) => {
@@ -33,12 +33,15 @@ const App = () => {
     } else {
       updatedOperand.push(operator);
     }
-    
+
     setTempDisplay(`${tempDisplay} ${operator} `);
   };
 
   return (
       <div className="App">
+        <div className="Headline">
+          <p>Calculator</p>
+        </div>
         <div className="calculator-display">{tempDisplay}</div>
           <div className="calculator-options">
             <div className="calculator-options--left">
