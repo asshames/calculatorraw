@@ -8,10 +8,16 @@ const App = () => {
   const [tempDisplay, setTempDisplay] = useState("");
   const [currentOperand, setCurrentOperand] = useState("");
   const [operand, setOperand] = useState([]);
+  const [operator, setOperator] = useState("");
 
   const handleOperandClick = (number) => {
     setCurrentOperand(parseInt(`${currentOperand}${number}`));
     setTempDisplay(`${tempDisplay}${number}`);
+    if(operator === "+" || operator === "-" || operator === "*" || operator === "/") {
+      setTempDisplay("");
+      setOperator(1);
+      setTempDisplay(number);
+    }
   };
 
   const handleCalculation = (operand) => {
@@ -27,14 +33,15 @@ const App = () => {
     updatedOperand.push(currentOperand);
     setOperand(updatedOperand);
     setCurrentOperand("");
+    setOperator(operator);
 
     if (operator === "=") {
       return handleCalculation(updatedOperand);
     } else {
       updatedOperand.push(operator);
+      // setTempDisplay("");
     }
-
-    setTempDisplay(`${tempDisplay} ${operator} `);
+    // setTempDisplay(`${tempDisplay} ${operator} `);
   };
 
   return (
