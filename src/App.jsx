@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import "./App.scss";
 
 const App = () => {
@@ -18,8 +18,8 @@ const App = () => {
     if (typeof operand[operand.length - 1] !== "number") {
       return;
     }
-
-    setTempDisplay(`${operand.join(" ")} = ${eval(operand.join(""))}`);
+    // setTempDisplay(`${operand.join(" ")} = ${eval(operand.join(""))}`);
+    setTempDisplay(`${eval(operand.join(""))}`);
   };
 
   const handleOperatorClick = (operator) => {
@@ -33,38 +33,38 @@ const App = () => {
     } else {
       updatedOperand.push(operator);
     }
-
+    
     setTempDisplay(`${tempDisplay} ${operator} `);
   };
 
   return (
       <div className="App">
         <div className="calculator-display">{tempDisplay}</div>
-        <div className="calculator-options">
-          <div className="calculator-options--left">
-            {calNumbers.map((number) => (
-                <p key={number} onClick={() => handleOperandClick(number)}>
-                  {number}
-                </p>
-            ))}
+          <div className="calculator-options">
+            <div className="calculator-options--left">
+              {calNumbers.map((number) => (
+                  <p key={number} onClick={() => handleOperandClick(number)}>
+                    {number}
+                  </p>
+              ))}
+            </div>
+            <div className="calculator-options--right">
+              {calOperators.map((operator) => (
+                  <p key={operator} onClick={() => handleOperatorClick(operator)}>
+                    {operator}
+                  </p>
+              ))}
+            </div>
+            <p
+                onClick={() => {
+                  setTempDisplay("");
+                  setCurrentOperand("");
+                  setOperand([]);
+                }}
+            >
+              CLEAR
+            </p>
           </div>
-          <div className="calculator-options--right">
-            {calOperators.map((operator) => (
-                <p key={operator} onClick={() => handleOperatorClick(operator)}>
-                  {operator}
-                </p>
-            ))}
-          </div>
-          <p
-              onClick={() => {
-                setTempDisplay("");
-                setCurrentOperand("");
-                setOperand([]);
-              }}
-          >
-            CLEAR
-          </p>
-        </div>
       </div>
   );
 };
