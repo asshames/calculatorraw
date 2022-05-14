@@ -10,6 +10,7 @@ const App = () => {
   const [operand, setOperand] = useState([]);
   const [operator, setOperator] = useState("");
 
+  //handle the number click
   const handleOperandClick = (number) => {
     setCurrentOperand(parseInt(`${currentOperand}${number}`));
     setTempDisplay(`${tempDisplay}${number}`);
@@ -20,6 +21,8 @@ const App = () => {
     }
   };
 
+  //handle the calculation
+
   const handleCalculation = (operand) => {
     if (typeof operand[operand.length - 1] !== "number") {
       return;
@@ -28,6 +31,7 @@ const App = () => {
     setTempDisplay(`${eval(operand.join(" "))}`);
   };
 
+  //handle the operator click
   const handleOperatorClick = (operator) => {
     const updatedOperand = [...operand];
     updatedOperand.push(currentOperand);
